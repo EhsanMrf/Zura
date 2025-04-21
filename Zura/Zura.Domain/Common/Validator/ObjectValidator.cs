@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Zura.Application.Common.Exception;
+using Zura.Domain.Common.Exception;
 
 namespace Zura.Application.Common.Validator;
 

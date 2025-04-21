@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Zura.Application.Common.Exception;
+using Zura.Domain.Common.Exception;
 
 namespace Zura.Application.Common.Validator;
 

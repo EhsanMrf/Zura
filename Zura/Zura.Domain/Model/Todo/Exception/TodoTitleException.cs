@@ -1,5 +1,5 @@
-﻿using Zura.Application.Common.Exception;
+﻿using Zura.Domain.Common.Exception;
 
 namespace Zura.Domain.Model.Todo.Exception;
 
-internal class TodoTitleException() : BaseException("Title Not Null");
+public class TodoTitleException() : BaseException("Title Not Null");

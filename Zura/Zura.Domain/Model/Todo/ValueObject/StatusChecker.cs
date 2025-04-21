@@ -10,9 +10,9 @@ public class StatusChecker : IValueObject
     /// <summary>
     /// current status
     /// </summary>
-    internal Status StatusOld { get; set; }
+    public Status StatusOld { get; set; }
 
-    internal StatusChecker(Status statusOld, Status statusNew)
+    public StatusChecker(Status statusOld, Status statusNew)
     {
         SetConstructor(statusOld, statusNew);
     }
@@ -26,13 +26,13 @@ public class StatusChecker : IValueObject
     private void GuardAssessmentForModeChange(Status statusNew)
     {
         ObjectValidator.Instance
-            .Must(StatusOld, x => x is Status.Pending && statusNew is Status.Completed or Status.Completed
+            .Must(StatusOld, x => x is Status.Pending && (statusNew is Status.Completed or Status.Archived)
                 , new TodoStatusCheckerModePendingException())
-            .Must(StatusOld, x => x is Status.InProgress && statusNew is Status.Pending
+            .Must(StatusOld, x => x is Status.InProgress && (statusNew is Status.Pending or Status.Archived)
                 , new TodoStatusCheckerModeInProgressException())
-            .Must(StatusOld, x => x is Status.Completed && statusNew is Status.Pending or Status.InProgress
+            .Must(StatusOld, x => x is Status.Completed && (statusNew is Status.Pending or Status.InProgress)
                 , new TodoStatusCheckerModeCompleteException())
-            .Must(StatusOld, x => x is Status.Archived && statusNew is Status.Pending
+            .Must(StatusOld, x => x is Status.Archived && (statusNew is Status.Pending or Status.InProgress or Status.Completed)
                 , new TodoStatusCheckerModeCompleteException());
     }
 
