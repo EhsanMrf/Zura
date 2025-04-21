@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Zura.Application.Enum;
 
-namespace Zura.Application.Todo.Commands;
+namespace Zura.Application.Todo.Commands.Create;
 
 public class CreateTodoCommand(string title, string? description, Priority priority, Status status)
     : IRequest<int>
