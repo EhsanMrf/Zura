@@ -6,4 +6,26 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Zura.Application\Zura.Application.csproj" />
+    <ProjectReference Include="..\Zura.Domain\Zura.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="microsoft.entityframeworkcore" Version="9.0.4" />
+	  <PackageReference Include="microsoft.entityframeworkcore.design" Version="9.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+	  <PackageReference Include="microsoft.entityframeworkcore.sqlserver" Version="9.0.4" />
+	  <PackageReference Include="microsoft.entityframeworkcore.tools" Version="9.0.4">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+  </ItemGroup>
+
 </Project>
