@@ -13,4 +13,8 @@
     <PackageReference Include="microsoft.entityframeworkcore" Version="9.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Zura.Domain\Zura.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
