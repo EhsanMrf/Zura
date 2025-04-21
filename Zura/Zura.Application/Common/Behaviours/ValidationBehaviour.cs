@@ -1,5 +1,6 @@
-﻿using MediatR;
-using FluentValidation;
+﻿using FluentValidation;
+using MediatR;
+
 namespace Zura.Application.Common.Behaviours;
 
 
@@ -22,7 +23,7 @@ public class ValidationBehaviour<TRequest, TResponse>(IEnumerable<IValidator<TRe
                 .ToList();
 
             if (failures.Count != 0)
-                throw new ValidationException(failures);
+                throw new Exceptions.ValidationException(failures);
         }
         return await next(cancellationToken);
     }

@@ -17,7 +17,6 @@ public sealed class UpdateTodoCommandHandler(IApplicationUnitOfWork unitOfWork)
         if (todo is null)
             throw new TodoNotFoundException();
 
-
         todo.Update(request.Title,request.Description,request.Priority,request.Status);
         return todo.Id;
     }

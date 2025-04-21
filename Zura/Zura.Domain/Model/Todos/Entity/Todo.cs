@@ -1,6 +1,7 @@
 ﻿using Zura.Application.Common;
 using Zura.Application.Common.Validator;
 using Zura.Application.Enum;
+using Zura.Domain.Model.Todos.Exception;
 using Zura.Domain.Model.Todos.ValueObject;
 
 namespace Zura.Domain.Model.Todos.Entity;
