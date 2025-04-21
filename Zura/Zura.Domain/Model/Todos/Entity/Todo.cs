@@ -1,6 +1,7 @@
 ﻿using Zura.Application.Common;
 using Zura.Application.Common.Validator;
 using Zura.Application.Enum;
+using Zura.Domain.Common;
 using Zura.Domain.Model.Todos.Exception;
 using Zura.Domain.Model.Todos.ValueObject;
 
@@ -27,6 +28,7 @@ public sealed class Todo : BaseEntity<int>
         SetData(title, description, priority);
         Status.Update(Status.Status, status);
         GuardAssessmentForValidation(Title);
+        Updating();
     }
 
     private Todo(string title, string? description, Priority priority)
@@ -34,7 +36,10 @@ public sealed class Todo : BaseEntity<int>
         SetData(title, description, priority);
         InitializeStatus();
         GuardAssessmentForValidation(Title);
+        Creating();
     }
+
+    
 
     private void SetData(string title, string? description, Priority priority)
     {

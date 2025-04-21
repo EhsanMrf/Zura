@@ -18,6 +18,7 @@ public sealed class UpdateTodoCommandHandler(IApplicationUnitOfWork unitOfWork)
             throw new TodoNotFoundException();
 
         todo.Update(request.Title,request.Description,request.Priority,request.Status);
+        await unitOfWork.SaveChangesAsync(cancellationToken);
         return todo.Id;
     }
 }
