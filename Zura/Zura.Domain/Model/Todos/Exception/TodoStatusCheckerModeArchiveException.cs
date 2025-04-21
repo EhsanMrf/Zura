@@ -1,6 +1,6 @@
 ﻿using Zura.Domain.Common.Exception;
 
-namespace Zura.Domain.Model.Todo.Exception;
+namespace Zura.Domain.Model.Todos.Exception;
 
 public class TodoStatusCheckerModeArchiveException() : BaseException("Change to archive is not allowed.");
 public class TodoStatusCheckerModeCompleteException() : BaseException("Change to complete  ve is not allowed.");

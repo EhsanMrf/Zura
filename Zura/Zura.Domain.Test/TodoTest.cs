@@ -1,8 +1,7 @@
 ﻿using FluentAssertions;
 using Zura.Application.Enum;
-using Zura.Domain.Model.Todo.Entity;
-using Zura.Domain.Model.Todo.Exception;
-using Zura.Domain.Model.Todo.ValueObject;
+using Zura.Domain.Model.Todos.Entity;
+using Zura.Domain.Model.Todos.Exception;
 
 namespace Zura.Domain.Test
 {
@@ -11,9 +10,8 @@ namespace Zura.Domain.Test
         [Fact]
         public void CreateTodo_WithValidData_ShouldCreateSuccessfully()
         {
-            var status = new StatusChecker(Status.Pending, Status.InProgress);
       
-            var todo = new Todo("Write Tests", "Use FluentAssertions", Priority.High, status);
+            var todo =  Todo.Create("Write Tests", "Use FluentAssertions", Priority.High);
             
             todo.Title.Should().Be("Write Tests");
             todo.Description.Should().Be("Use FluentAssertions");
@@ -24,27 +22,12 @@ namespace Zura.Domain.Test
         [Fact]
         public void CreateTodo_WithNullTitle_ShouldThrowTodoTitleException()
         {
-            var status = new StatusChecker(Status.Pending, Status.InProgress);
-
             var act = () =>
             {
-                var todo = new Todo(null!, "desc", Priority.Low, status);
+                var todo = Todo.Create(null!, "desc", Priority.Low);
             };
 
             act.Should().Throw<TodoTitleException>();
         }
-
-        [Fact]
-        public void CreateTodo_WithNullStatus_ShouldThrowTodoStatusInvalidException()
-        {
-            var act = () =>
-            {
-                var todo = new Todo("Test", "desc", Priority.Medium, null!);
-            };
-
-            act.Should().Throw<TodoStatusInvalidException>();
-        }
-
-
     }
 }

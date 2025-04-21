@@ -1,11 +1,13 @@
 ﻿using FluentAssertions;
 using Zura.Application.Enum;
-using Zura.Domain.Model.Todo.Entity;
-using Zura.Domain.Model.Todo.Exception;
-using Zura.Domain.Model.Todo.ValueObject;
+using Zura.Domain.Model.Todos.Exception;
+using Zura.Domain.Model.Todos.ValueObject;
 
 namespace Zura.Domain.Test;
 
+/// <summary>
+/// value object test
+/// </summary>
 public sealed class TodoStatusCheckerTest
 {
 
@@ -14,7 +16,8 @@ public sealed class TodoStatusCheckerTest
     {
         var act = () =>
         {
-            var statusChecker = new StatusChecker(Status.InProgress, Status.Pending);
+            var statusChecker = StatusChecker.Create();
+            statusChecker.Update(Status.InProgress,Status.Pending);
         };
 
         act.Should().Throw<TodoStatusCheckerModeInProgressException>();
@@ -26,7 +29,8 @@ public sealed class TodoStatusCheckerTest
     {
         var act = () =>
         {
-            var statusChecker = new StatusChecker(Status.Pending, Status.Completed); 
+            var statusChecker = StatusChecker.Create();
+            statusChecker.Update(Status.Pending, Status.Completed);
         };
 
         act.Should().Throw<TodoStatusCheckerModePendingException>();

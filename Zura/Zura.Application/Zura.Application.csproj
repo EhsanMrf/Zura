@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Zura.Domain\Zura.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Todo\Queries\" />
+  </ItemGroup>
+
 </Project>
